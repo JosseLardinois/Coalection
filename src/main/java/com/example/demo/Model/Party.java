@@ -7,23 +7,26 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "party")
+@Table(name="party")
 @Getter
 @Setter
 public class Party {
-    public Party(Integer id, String name, String leader, String description) {
+    public Party(Integer id, String description, Boolean isPartyNational, Integer partyLeaderId, String name) {
         this.id = id;
-        this.name = name;
-        this.leader = leader;
         this.description = description;
+        this.isPartyNational = isPartyNational;
+        this.partyLeaderId = partyLeaderId;
+        this.name = name;
+
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
-    private String leader;
     private String description;
+    private Boolean isPartyNational;
+    private Integer partyLeaderId;
+    private String name;
 
     public Party() {
 

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/coalitions")
+@RequestMapping("/results")
 public class ResultController {
 
     @Autowired
@@ -36,6 +36,7 @@ public class ResultController {
     public void add(@RequestBody Result result){
 
         resultService.saveResult(result);
+        
     }
 
     @PutMapping("/{id}")
