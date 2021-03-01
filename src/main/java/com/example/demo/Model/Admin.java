@@ -7,12 +7,12 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="user")
+@Table(name="admin")
 @Getter
 @Setter
-public class User {
+public class Admin {
 
-    public User(Integer id) {
+    public Admin(Integer id) {
         this.id = id;
     }
 
@@ -22,11 +22,11 @@ public class User {
     private Integer id;
 
 
-    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
-    private Set<Account> account;
+    @OneToMany(mappedBy = "admin" , cascade = CascadeType.ALL)
+    private Set<Account> accounts;
 
 
-    public User(){
+    public Admin(){
 
     }
 

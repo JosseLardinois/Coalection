@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,22 +12,27 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Party {
-    public Party(Integer id, String description, Boolean isPartyNational, Integer partyLeaderId, String name) {
+    public Party(Integer id, String name, String description, Boolean ispartynational) {
         this.id = id;
-        this.description = description;
-        this.isPartyNational = isPartyNational;
-        this.partyLeaderId = partyLeaderId;
         this.name = name;
+        this.description = description;
+        this.ispartynational = ispartynational;
+
 
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String description;
-    private Boolean isPartyNational;
-    private Integer partyLeaderId;
     private String name;
+    private String description;
+    private Boolean ispartynational;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="partyleaderid", referencedColumnName = "id")
+    private PartyLeader partyLeader;
+
 
     public Party() {
 
